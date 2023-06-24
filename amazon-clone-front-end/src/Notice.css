@@ -1,0 +1,42 @@
+.notice {
+    background-color: #fff ;
+    
+
+}
+.notice__brdr{
+    border: 1px solid silver;
+    margin:20px 0; 
+    width: 100%;
+    text-align: center; 
+    border-radius: 3px;
+    padding: 20px;
+     
+}
+.notice__recommend p {
+ color:rgb(39, 38, 38);
+ font-size: .8rem;
+
+}
+.notice__button>button {
+    background: #f0c14b;
+    border: 1px solid #f0c14b;
+    padding: 3px 80px;
+    border-radius: 2px;
+    margin-top: 10px;
+    color: #111;
+    cursor:pointer;
+}
+.notice__button>button:hover{
+    background: #fccf5d; 
+}
+.notice__newCustomer span{
+   color: rgb(14, 104, 110); 
+   font-size: 12px;
+}
+.notice__newCustomer {
+    display: inline-flex;
+   
+}
+.newCustomer{
+    font-size: 12px;
+}
