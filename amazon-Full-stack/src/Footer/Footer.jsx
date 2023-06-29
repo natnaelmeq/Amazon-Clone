@@ -2,7 +2,7 @@ import React from "react";
 import "./Footer.css";
 import LanguageIcon from "@mui/icons-material/Language";
 import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
-import usFlag from "./assets/images/us-flag.jpg";
+import usFlag from "../assets/images/us-flag.jpg";
 
 // import { Link } from "react-router-dom";
 function Footer() {
@@ -64,9 +64,9 @@ function Footer() {
 					</a>
 				</span>
 			</div>
-			<div className="footer">
+			<div className="footer ">
 				{footerData.map((section, index) => (
-					<ul key={index}>
+					<ul key={index} className="">
 						<h3>{section.title}</h3>
 						{section.items.map((item, itemIndex) => (
 							<li key={itemIndex}>

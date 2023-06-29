@@ -1,10 +1,10 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import Kitchen from "./assets/images/Kitchen.jpg";
-import Beauty from "./assets/images/Beauty.jpg";
-import Gaming from "./assets/images/Gaming.jpg";
-import Shop from "./assets/images/Shop.jpg";
-import Toys from "./assets/images/Toys.jpg";
+import Kitchen from "../assets/images/Kitchen.jpg";
+import Beauty from "../assets/images/Beauty.jpg";
+import Gaming from "../assets/images/Gaming.jpg";
+import Shop from "../assets/images/Shop.jpg";
+import Toys from "../assets/images/Toys.jpg";
 
 //fade= 
 

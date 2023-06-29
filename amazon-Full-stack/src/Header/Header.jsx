@@ -1,90 +1,56 @@
-
 import React from "react";
 import "./Header.css";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MenuIcon from "@mui/icons-material/Menu";
-// import { Link } from "react-router-dom";
-// import { useStateValue } from "./StateProvider";
-// import { auth } from "./firebase";
-import usFlag from "./assets/images/us-flag.jpg";
+import { Link } from "react-router-dom";
+import { useStateValue } from "../StateProvider";
+import { auth } from "../firebase";
+import usFlag from "../assets/images/us-flag.jpg";
 
 const Header = () => {
-	// const [{ basket, user }, dispatch] = useStateValue();
-	// const handleAuthenticaton = () => {
-	// 	if (user) {
-	// 		auth.signOut();
-	// 	}
-	// };
-	// const header_searchRef = useRef();
-	// const header_searchIconBtnRef = useRef();
-	// const allBtnRef = useRef();
-	// const searchBrdrColor = () => {
-	// 	header_searchRef.current.classList.add("active");
-	// 	header_searchIconBtnRef.current.classList.remove("addBorder");
-	// 	allBtnRef.current.classList.remove("addBorder");
-	// };
-	// const searchIconBtn = () => {
-	// 	header_searchRef.current.classList.remove("active");
-	// 	header_searchIconBtnRef.current.classList.add("addBorder");
-	// 	allBtnRef.current.classList.remove("addBorder");
-	// };
-	// function myFunction() {
-	// 	document.getElementById("Amazon__Dropdown").classList.toggle("show");
-	// 	allBtnRef.current.classList.add("addBorder");
-	// 	header_searchRef.current.classList.remove("active");
-	// 	header_searchIconBtnRef.current.classList.remove("addBorder");
-	// }
-
-	// // Close the dropdown if the user clicks outside of it
-	// window.onclick = function (event) {
-	// 	if (!event.target.matches(".drop__btn")) {
-	// 		var Amazondropdowns = document.getElementsByClassName(
-	// 			"Amazon__dropdown__content"
-	// 		);
-	// 		var i;
-	// 		for (i = 0; i < Amazondropdowns.length; i++) {
-	// 			var openDropdown = Amazondropdowns[i];
-	// 			if (openDropdown.classList.contains("show")) {
-	// 				openDropdown.classList.remove("show");
-	// 			}
-	// 		}
-	// 	}
-	// };
+	const [{ basket, user }, dispatch] = useStateValue();
+	// console.log(basket[0].id)
+	const handleAuthenticaton = () => {
+		if (user) {
+			auth.signOut();
+		}
+	};
+	const getQuantity = (basket) => {
+		return basket?.reduce((qty, item) => qty + item.quantity, 0);
+	};
 
 	return (
 		<>
 			{/* header section */}
 			<div className="header">
 				<div className="left-wrapper">
-					<div className="header-logo-wrapper">
-													<img
+					<Link to="/">
+						<div className="header-logo-wrapper">
+							<img
 								className="header__logo header__hover"
 								src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
 								alt="header logo"
 							/>
-						
-					</div>
+						</div>
+					</Link>
 					<div className="deliver">
 						<p>Deliver to</p>
 						<h5>
-							<LocationOnIcon fontSize="small" /><span> Denmark</span>
+							<LocationOnIcon fontSize="small" />
+							<span> Denmark</span>
 						</h5>
 					</div>
 				</div>
-				{/* onClick={searchBarBgBorder} */}
-				{/* ref={header_searchRef}?????? */}
+
 				<div className="header__search dropdown__btn  ">
-					<button
-						// ref={allBtnRef}
-						// onClick={myFunction}
-						className="drop__btn all"
-					>
+					<button className="drop__btn all">
 						All <ArrowDropDownIcon className="header__dropdown" />
 					</button>
-					<div id="Amazon__Dropdown" className="Amazon__dropdown__content">
+					{/* <div id="Amazon__Dropdown" className="Amazon__dropdown__content">
 						<option value="search-dept">All Departments</option>
 						<option value="arts-and-crafts">Arts &amp; Crafts</option>
 						<option value="Automotive">Automotive</option>
@@ -115,59 +81,49 @@ const Header = () => {
 						<option value="Toys">Toys &amp; Games</option>
 						<option value="Video-Games">Video Games</option>
 						<option value="Women'sp">Women's Fashion</option>
-					</div>
+					</div> */}
 					<input
-						// onClick={searchBrdrColor}
 						className="header__searchInput"
-                        type="text"
-                        placeholder="Search Amazon"
+						type="text"
+						placeholder="Search Amazon"
 					/>
-					<button
-						// ref={header_searchIconBtnRef}
-						// onClick={searchIconBtn}
-						type="submit"
-						className="header__searchIcon"
-					>
+					<button type="submit" className="header__searchIcon">
 						<SearchIcon />
 					</button>
 				</div>
 				<div className="right-wrapper">
-                    <div className="flag">
-                      
-						<img src={usFlag}  alt="us-flag" />
+					<div className="flag">
+						<img src={usFlag} alt="us-flag" />
 						<span>
-							 EN <ArrowDropDownIcon className="flagDrop" />
+							EN <ArrowDropDownIcon className="flagDrop" />
 						</span>
 					</div>
-					{/* onClick={handleAuthenticaton}?????? */}
-					{/* to={!user && "/Login"}???? */}
-					<div to="./Login" className="header__clearlink">
-						<div className="header__option">
+
+					<Link to={!user && "/Login"} className="header__clearlink">
+						<div onClick={handleAuthenticaton} className="header__option">
 							<span className="header__optionLineOne">
-								{" "}
-								Hello,Sign in
-								{/* hello, {!user ? "Customer" : user.email} */}
+								Hello,{user ? user?.email : "Customer"}
 							</span>
 							<span className="header__optionLineTwo">
-								{/* {user ? "Sign Out" : "Sign In"} */}Accounts Lists
+								{user ? "Sign Out" : "Sign In"}
 							</span>
 						</div>
-					</div>
+					</Link>
 					<div to="./Orders" className="header__clearlink">
 						<div className="header__option">
 							<span className="header__optionLineOne">Returns</span>
 							<span className="header__optionLineTwo">& Orders</span>
 						</div>
 					</div>
-					<div to="/Checkout" className="header__clearlink">
+					<Link to="/checkout" className="header__clearlink">
 						<div className="header__optionCart ">
 							<span className="header__optionLineTwo header__cart__count">
-								{/* {basket?.length} */}
+								{getQuantity(basket)}
 							</span>
 							<ShoppingCartIcon />
 							<span className="header__optionLineTwo">Cart</span>
 						</div>
-					</div>
+					</Link>
 				</div>
 			</div>
 			{/* header section end */}

@@ -102,7 +102,7 @@
 	color: #269eb4;
 	opacity: 1;
 }
-@media (max-width: 767px) {
+@media (max-width: 500px) {
 	.footer {
 		display: flex;
 		flex-direction: column;
@@ -112,4 +112,4 @@
 		text-decoration: underline;
 	}
 }
-/* footer css ende here */
+/* footer css end here */
