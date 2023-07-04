@@ -19,6 +19,15 @@ function Footer() {
 					],
 				},
 				{
+					title: "Amazon Payment Products",
+					items: [
+						{ text: "Amazon Business Card", href: "#" },
+						{ text: "Shop with Points", href: "#" },
+						{ text: "Reload Your Balance", href: "#" },
+						{ text: "Amazon Currency Converter", href: "#" },
+					],
+				},
+				{
 					title: "Make Money with Us",
 					items: [
 						{ text: "Sell products on Amazon", href: "#" },
@@ -31,15 +40,7 @@ function Footer() {
 						{ text: "See More Make Money with Us", href: "#" },
 					],
 				},
-				{
-					title: "Amazon Payment Products",
-					items: [
-						{ text: "Amazon Business Card", href: "#" },
-						{ text: "Shop with Points", href: "#" },
-						{ text: "Reload Your Balance", href: "#" },
-						{ text: "Amazon Currency Converter", href: "#" },
-					],
-				},
+
 				{
 					title: "Let Us Help You",
 					items: [
@@ -64,9 +65,9 @@ function Footer() {
 					</a>
 				</span>
 			</div>
-			<div className="footer ">
+			<div className="footer row container m-auto ">
 				{footerData.map((section, index) => (
-					<ul key={index} className="">
+					<ul key={index} className="col-6 col-md-3 ">
 						<h3>{section.title}</h3>
 						{section.items.map((item, itemIndex) => (
 							<li key={itemIndex}>
@@ -86,7 +87,7 @@ function Footer() {
 							/>
 						</div>
 					</div>
-					<div className="ftr_wrapper_right">
+					<div className="ftr_wrapper_right ">
 						<div className="language ftr_wrapper_right_brdr">
 							<LanguageIcon fontSize="small" /> &nbsp;&nbsp;<span>English</span>
 							<UnfoldMoreIcon fontSize="small" />
@@ -102,7 +103,7 @@ function Footer() {
 					</div>
 				</div>
 			</div>
-			<div className="footer__credit">
+			<div className="footer__credit ">
 				<h4>
 					Built by:-
 					<a href="https://natnael.dk/" target="_blank" rel="noreferrer">

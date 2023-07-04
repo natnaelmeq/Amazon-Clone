@@ -103,13 +103,16 @@
 	opacity: 1;
 }
 @media (max-width: 500px) {
-	.footer {
+	.footer .footer_logos_container {
 		display: flex;
-		flex-direction: column;
+		
+		/* flex-direction: column; */
 		align-content: center;
+		font-size: 8px;
 	}
 	.footer h4 {
 		text-decoration: underline;
 	}
+	
 }
 /* footer css end here */

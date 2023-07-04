@@ -8,7 +8,6 @@ function reducer(state, action) {
 	// console.log(state)
 	// console.log(action.item.quantity)
 	switch (action.type) {
-		
 		case "ADD_TO_BASKET":
 			const existingItem = state.basket.find(
 				(item) => item.id === action.item.id
@@ -18,7 +17,7 @@ function reducer(state, action) {
 					...state,
 					basket: state.basket.map((item) =>
 						item.id === action.item.id
-							? { ...item, quantity: item.quantity + action.item.quantity }//1 + no of click
+							? { ...item, quantity: item.quantity + action.item.quantity } //1 + no of click
 							: item
 					),
 				};
@@ -29,15 +28,13 @@ function reducer(state, action) {
 				};
 			}
 		case "DELETE":
-			const existItem = state.basket.find(
-				(item) => item.id === action.item.id
-			);
+			const existItem = state.basket.find((item) => item.id === action.item.id);
 			if (existItem) {
 				if (existItem.quantity === 1) {
 					// Remove the item from the basket
 					return {
 						...state,
-						basket: state.basket.filter((item) => item.id !== action.item.id),// if it one delete by filter and 
+						basket: state.basket.filter((item) => item.id !== action.item.id), // if it one delete by filter and
 					};
 				} else {
 					// Reduce the quantity of the item by 1
@@ -57,7 +54,12 @@ function reducer(state, action) {
 				};
 			}
 
-	
+		case "EMPTY_BASKET":
+			return {
+				...state,
+				basket: [],
+			};
+
 		// case "REMOVE_FROM_BASKET":
 		// 	const index = state.basket.findIndex(
 		// 		(basketItem) => basketItem.id === action.id

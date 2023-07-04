@@ -4,7 +4,15 @@ import { useStateValue } from "../StateProvider";
 import StarIcon from "@mui/icons-material/Star";
 // import Product from "../Product/Product";
 
-function CheckoutProduct({ id, title, price, rating, image, quantity }) {
+function CheckoutProduct({
+	id,
+	title,
+	price,
+	rating,
+	image,
+	quantity,
+	hideButton,
+}) {
 	const [{ basket }, dispatch] = useStateValue();
 
 	const addToBasket = () => {
@@ -65,16 +73,20 @@ function CheckoutProduct({ id, title, price, rating, image, quantity }) {
 							</small>
 						))}
 				</div>
-				<p>Qty= {quantity}</p>
+				{!hideButton && (<p>Qty= {quantity}</p>)}
 				<br />
 
-				<button onClick={addToBasket}>
-					{" "}
-					<strong>+</strong>
-				</button>
-				<button onClick={DeleteItem}>
-					<strong>-</strong>
-				</button>
+				{!hideButton && (
+					<button onClick={addToBasket}>
+						{" "}
+						<strong>+</strong>
+					</button>
+				)}
+				{!hideButton && (
+					<button onClick={DeleteItem}>
+						<strong>-</strong>
+					</button>
+				)}
 				{/* {!hideButton && <button onClick={removeFromBasket}>Remove </button>} */}
 				<br />
 				<div className="underline"></div>
